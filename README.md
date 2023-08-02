@@ -25,6 +25,7 @@ O Manga Downloader é um programa em Python que permite baixar automaticamente a
 **Observações:**
 - Certifique-se de ter uma conexão estável com a internet para o correto funcionamento do programa.
 - O Manga Downloader não hospeda nem fornece links para mangás, apenas baixa as imagens a partir de links fornecidos pelo usuário.
+- O programa funciona e foi testado para o site **https://mangahost4.com/**, para demais site é preciso fazer modificações no código (principalmente na função capítulos que faz o web scraping dos links das imagens).
 
 **Requisitos:**
 - Python 3.x
