@@ -17,6 +17,7 @@ def capitulos(url, posicao, header):
         for chapter in chapters:
             url_caps.append(chapter.source['srcset']) #especifica a tag source dentro do picture, pegando o link da imagem que está no srcset
         return url_caps #retorna o array apenas com os links das imagens
+        # outra forma de fazer return [chapter.source['srcset'] for chapter in chapters]
     else:
         print("Erro ao acessar a página:", response.status_code)
 
@@ -54,18 +55,19 @@ if __name__ == "__main__":
     for j in range (35, 36): #a numeração é os capítulos, define a quantidade de capítulos que quer baixar
         #retorna o valor específico das imagem para ser usado quando for baixar
         value = capitulos(BASE_URL, j, header)
-        criar_pasta(BASE_PATH, j) #chama função criar pasta onde vai ser salva as imagens
-        #path é o local da pasta que foi criada para salvar as imagens
-        path = os.path.join(BASE_PATH + str(j)) #o local + a posição 
-        # # i é a quantidade de imagens que tem por capítulo
-        for i in range(len(value)): #vê a quantidade de imagens necessárias para baixar
-            try:
-                #nome_arquivo vai juntar o local + mais a posição da imagem e no formato jpg
-                nome_arquivo = os.path.join(path , str(i)+".jpg")
-                #baixar arquivos passa o parâmetro value com o indice, o nome_arquivo que vai ser onde vai ser salvo e o formato, header que é necessário no request
-                baixar_arquivos(value[i], nome_arquivo, header)
-            except:
-                print("Download Concluído ou Erro Verificar")
+        print(value)
+        # criar_pasta(BASE_PATH, j) #chama função criar pasta onde vai ser salva as imagens
+        # #path é o local da pasta que foi criada para salvar as imagens
+        # path = os.path.join(BASE_PATH + str(j)) #o local + a posição 
+        # # # i é a quantidade de imagens que tem por capítulo
+        # for i in range(len(value)): #vê a quantidade de imagens necessárias para baixar
+        #     try:
+        #         #nome_arquivo vai juntar o local + mais a posição da imagem e no formato jpg
+        #         nome_arquivo = os.path.join(path , str(i)+".jpg")
+        #         #baixar arquivos passa o parâmetro value com o indice, o nome_arquivo que vai ser onde vai ser salvo e o formato, header que é necessário no request
+        #         baixar_arquivos(value[i], nome_arquivo, header)
+        #     except:
+        #         print("Download Concluído ou Erro Verificar")
 
 
         
